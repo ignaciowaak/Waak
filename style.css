@@ -17,8 +17,8 @@ body {
 
 .music-player {
     position: relative;
-    width: 290px;
-    padding: 10px;
+    width: 280px;
+    padding: 5px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(1000px);
