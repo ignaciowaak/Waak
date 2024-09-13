@@ -96,3 +96,26 @@ input[type="range"] {
     background-size: 900% 900%;
     z-index: -3;
 }
+
+/* Contenedor del título de la canción */
+.song-title-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+/* Título animado */
+.song-title {
+    display: inline-block;
+    animation: scrollTitle 15s linear infinite;
+}
+
+@keyframes scrollTitle {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
