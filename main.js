@@ -18,8 +18,8 @@ let isRepeating = false;
 const songs = [
   { title: 'FE!N Travis Scott', src: 'cansiones/1.mp3', img: 'fotos/1.jpg' },
   { title: 'Drake jmmy cooks ft 21 savege', src: 'cansiones/2.mp3', img: 'fotos/2.jpg' },
-  { title: 'Polo G - Go Stupip.mp3 ', src: 'cansiones/3.mp3', img: 'fotos/3.jpg' },
-  { title: 'Canción 4', src: 'cansiones/4.mp3', img: 'fotos/4.jpg' },
+  { title: 'Polo G - Go Stupip', src: 'cansiones/3.mp3', img: 'fotos/3.jpg' },
+  { title: 'Travis Scott - BUTTERFLY EFFECT', src: 'cansiones/4.mp3', img: 'fotos/4.jpg' },
   { title: 'Canción 5', src: 'cansiones/5.mp3', img: 'fotos/5.jpg' },
   { title: 'Canción 6', src: 'cansiones/6.mp3', img: 'fotos/6.jpg' },
   { title: 'Canción 7', src: 'cansiones/7.mp3', img: 'fotos/7.jpg' },
