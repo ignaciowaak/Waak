@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>My play list (IG)</title>
+    <style>
+        /* Agrega los estilos en línea aquí */
+        #volume {
+            accent-color: white; /* Cambia el color del control de volumen */
+        }
+
+        #progress-bar {
+            accent-color: white; /* Cambia el color del recorrido de la música */
+        }
+
+        .controls button,
+        .options button {
+            background-color: transparent; /* Botones con fondo transparente */
+            border: none;
+            color: white; /* Cambia el color del texto de los botones a blanco */
+            font-size: 1.5rem;
+        }
+
+        .volume-control label,
+        #time-display {
+            color: white; /* Cambia el color del texto del control de volumen y el tiempo a blanco */
+        }
+    </style>
+</head>
+<body>
+    <div class="music-player">
+        <div class="blur-background" id="blur-background"></div>
+        <div class="song-info">
+            <img id="song-img" src="song1.jpg" alt="Canción">
+            <h2 id="song-title">FE!N (Travis Scott)</h2>
+        </div>
+        <audio id="audio-player" src="song1.mp3"></audio>
+
+        <div class="progress-container">
+            <input type="range" id="progress-bar" value="0" min="0" max="100">
+            <div id="time-display">00:00 / 00:00</div>
+        </div>
+
+        <div class="controls">
+            <button id="prev-song">⏮️</button>
+            <button id="play-pause">▶️</button>
+            <button id="next-song">⏭️</button>
+        </div>
+
+        <div class="volume-control">
+            <label for="volume">Volumen:</label>
+            <input type="range" id="volume" min="0" max="1" step="0.1" value="0.5">
+        </div>
+
+        <div class="options">
+            <button id="shuffle">🔀</button>
+            <button id="repeat">🔁</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

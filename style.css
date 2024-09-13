@@ -1,0 +1,98 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+    position: relative;
+}
+
+.music-player {
+    position: relative;
+    width: 290px;
+    padding: 10px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(1000px);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.blur-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(100deg, #E0FFFF, #B0E0E6, #ADD8E6, #87CEFA, #4682B4, #5F9EA0, #00CED1, #20B2AA, #7FFFD4, #66CDAA, #3CB371, #2E8B57, #006400, #003366, #000080);
+    background-size: 5000% 5000%;
+    filter: blur(9000px);
+    z-index: -9;
+    animation: animateBackground 30s linear infinite;
+}
+
+@keyframes animateBackground {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.song-info img {
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.progress-container {
+    margin: 10px 0;
+    text-align: center;
+}
+
+#progress-bar {
+    width: 100%;
+}
+
+#time-display {
+    font-size: 15px;
+    color: white;
+}
+
+.controls, .options, .volume-control {
+    margin-top: 10px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="range"] {
+    width: 100%;
+    color: white;
+}
+
+/* Nuevo fondo animado detrás de todo */
+#dynamic-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #7FFFD4, #4682B4, #F0F8FF, #C0C0C0);
+    background-size: 900% 900%;
+    z-index: -3;
+}
