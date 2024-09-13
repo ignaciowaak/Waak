@@ -24,16 +24,23 @@ const songs = [
   { title: 'Canción 6', src: 'cansiones/6.mp3', img: 'fotos/6.jpg' },
   { title: 'Canción 7', src: 'cansiones/7.mp3', img: 'fotos/7.jpg' },
   { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' }
-
-
 ];
 
 let currentSongIndex = 0;
 let audioContext, analyser, dataArray, bufferLength;
 
+// Pre-cargar todas las canciones al cargar la página
+window.addEventListener('load', function() {
+  songs.forEach(function(song) {
+    const audioElement = new Audio(song.src);
+    audioElement.preload = 'auto'; // Preload de todas las canciones
+  });
+});
+
 function loadSong(songIndex) {
   const song = songs[songIndex];
   audio.src = song.src;
+  audio.preload = 'auto'; // Asegurar pre-carga de la canción actual
   songTitle.textContent = song.title;
   songImg.src = song.img;
   progressBar.value = 0;
@@ -120,14 +127,11 @@ function animateBackground() {
   }
   lowFrequencyAverage = lowFrequencyAverage / (bufferLength / 2);
 
-  // Cambia el fondo de acuerdo a la intensidad
   const intensity = lowFrequencyAverage / 255;
   const speed = 1 + intensity * 2;
-  const colorChangeSpeed = 400 - intensity * 300;
 
   dynamicBackground.style.backgroundPosition = `${Math.sin(audio.currentTime * speed) * 50 + 50}% ${Math.cos(audio.currentTime * speed) * 50 + 50}%`;
 
-  // Cambio de colores basado en la intensidad de la música
   const color1 = `hsl(${Math.random() * 360}, 100%, ${50 + intensity * 30}%)`;
   const color2 = `hsl(${Math.random() * 360}, 100%, ${50 + intensity * 30}%)`;
 
