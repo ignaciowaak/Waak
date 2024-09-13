@@ -29,20 +29,29 @@ const songs = [
 let currentSongIndex = 0;
 let audioContext, analyser, dataArray, bufferLength;
 
-// Pre-cargar todas las canciones al cargar la página
-window.addEventListener('load', function() {
-  songs.forEach(function(song) {
-    const audioElement = new Audio(song.src);
-    audioElement.preload = 'auto'; // Preload de todas las canciones
-  });
-});
-
 function loadSong(songIndex) {
   const song = songs[songIndex];
   audio.src = song.src;
-  audio.preload = 'auto'; // Asegurar pre-carga de la canción actual
-  songTitle.textContent = song.title;
+  
+  // Crear el contenedor del título con la animación
+  const songTitleContainer = document.createElement('div');
+  songTitleContainer.classList.add('song-title-container');
+
+  const songTitleElement = document.createElement('div');
+  songTitleElement.classList.add('song-title');
+  songTitleElement.textContent = song.title;
+
+  songTitleContainer.appendChild(songTitleElement);
+
+  // Reemplazar el contenido de #song-title con el contenedor animado
+  const songTitleWrapper = document.getElementById('song-title');
+  songTitleWrapper.innerHTML = '';
+  songTitleWrapper.appendChild(songTitleContainer);
+
+  // Actualizar la imagen
   songImg.src = song.img;
+  
+  // Reiniciar barra de progreso
   progressBar.value = 0;
   updateProgress();
 }
@@ -129,6 +138,7 @@ function animateBackground() {
 
   const intensity = lowFrequencyAverage / 255;
   const speed = 1 + intensity * 2;
+  const colorChangeSpeed = 400 - intensity * 300;
 
   dynamicBackground.style.backgroundPosition = `${Math.sin(audio.currentTime * speed) * 50 + 50}% ${Math.cos(audio.currentTime * speed) * 50 + 50}%`;
 
