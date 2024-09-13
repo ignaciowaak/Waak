@@ -9,7 +9,10 @@ const songTitle = document.getElementById('song-title');
 const songImg = document.getElementById('song-img');
 const progressBar = document.getElementById('progress-bar');
 const timeDisplay = document.getElementById('time-display');
-const dynamicBackground = document.getElementById('dynamic-background');
+const menuButton = document.getElementById('menu-button');
+const songListMenu = document.getElementById('song-list-menu');
+const songList = document.getElementById('song-list');
+const searchBar = document.getElementById('search-bar');
 
 let isPlaying = false;
 let isShuffling = false;
@@ -27,31 +30,13 @@ const songs = [
 ];
 
 let currentSongIndex = 0;
-let audioContext, analyser, dataArray, bufferLength;
 
 function loadSong(songIndex) {
   const song = songs[songIndex];
   audio.src = song.src;
-  
-  // Crear el contenedor del título con la animación
-  const songTitleContainer = document.createElement('div');
-  songTitleContainer.classList.add('song-title-container');
-
-  const songTitleElement = document.createElement('div');
-  songTitleElement.classList.add('song-title');
-  songTitleElement.textContent = song.title;
-
-  songTitleContainer.appendChild(songTitleElement);
-
-  // Reemplazar el contenido de #song-title con el contenedor animado
-  const songTitleWrapper = document.getElementById('song-title');
-  songTitleWrapper.innerHTML = '';
-  songTitleWrapper.appendChild(songTitleContainer);
-
-  // Actualizar la imagen
+  songTitle.textContent = song.title;
   songImg.src = song.img;
-  
-  // Reiniciar barra de progreso
+  songImg.setAttribute('loading', 'lazy'); // Cargar imágenes de manera perezosa
   progressBar.value = 0;
   updateProgress();
 }
@@ -65,18 +50,10 @@ function playPause() {
     playPauseBtn.textContent = '⏸️';
   }
   isPlaying = !isPlaying;
-
-  if (!audioContext) {
-    initAudioAnalyzer();
-  }
 }
 
 function nextSong() {
-  if (isShuffling) {
-    currentSongIndex = Math.floor(Math.random() * songs.length);
-  } else {
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
-  }
+  currentSongIndex = isShuffling ? Math.floor(Math.random() * songs.length) : (currentSongIndex + 1) % songs.length;
   loadSong(currentSongIndex);
   playPause();
 }
@@ -99,12 +76,12 @@ function toggleRepeat() {
 }
 
 function updateProgress() {
-  progressBar.max = audio.duration;
+  progressBar.max = audio.duration || 0;
   progressBar.value = audio.currentTime;
   let minutes = Math.floor(audio.currentTime / 60);
   let seconds = Math.floor(audio.currentTime % 60);
-  let totalMinutes = Math.floor(audio.duration / 60);
-  let totalSeconds = Math.floor(audio.duration % 60);
+  let totalMinutes = Math.floor((audio.duration || 0) / 60);
+  let totalSeconds = Math.floor((audio.duration || 0) % 60);
 
   timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds} / ${totalMinutes}:${totalSeconds < 10 ? '0' : ''}${totalSeconds}`;
 }
@@ -113,42 +90,67 @@ function setProgress() {
   audio.currentTime = progressBar.value;
 }
 
-function initAudioAnalyzer() {
-  audioContext = new(window.AudioContext || window.webkitAudioContext)();
-  const source = audioContext.createMediaElementSource(audio);
-  analyser = audioContext.createAnalyser();
-  source.connect(analyser);
-  analyser.connect(audioContext.destination);
-
-  analyser.fftSize = 256;
-  bufferLength = analyser.frequencyBinCount;
-  dataArray = new Uint8Array(bufferLength);
-
-  animateBackground();
-}
-
-function animateBackground() {
-  analyser.getByteFrequencyData(dataArray);
-
-  let lowFrequencyAverage = 0;
-  for (let i = 0; i < bufferLength / 2; i++) {
-    lowFrequencyAverage += dataArray[i];
+function toggleMenu() {
+  songListMenu.classList.toggle('visible');
+  if (songListMenu.classList.contains('visible')) {
+    songListMenu.style.display = 'block';
+  } else {
+    setTimeout(() => {
+      songListMenu.style.display = 'none';
+    }, 300);
   }
-  lowFrequencyAverage = lowFrequencyAverage / (bufferLength / 2);
-
-  const intensity = lowFrequencyAverage / 255;
-  const speed = 1 + intensity * 2;
-  const colorChangeSpeed = 400 - intensity * 300;
-
-  dynamicBackground.style.backgroundPosition = `${Math.sin(audio.currentTime * speed) * 50 + 50}% ${Math.cos(audio.currentTime * speed) * 50 + 50}%`;
-
-  const color1 = `hsl(${Math.random() * 360}, 100%, ${50 + intensity * 30}%)`;
-  const color2 = `hsl(${Math.random() * 360}, 100%, ${50 + intensity * 30}%)`;
-
-  dynamicBackground.style.background = `linear-gradient(45deg, ${color1}, ${color2})`;
-
-  requestAnimationFrame(animateBackground);
 }
+
+function updateSongList() {
+  songList.innerHTML = ''; 
+  songs.forEach((song, index) => {
+    const songItem = document.createElement('div');
+    songItem.classList.add('song-item');
+    songItem.textContent = song.title;
+    songItem.addEventListener('click', () => {
+      currentSongIndex = index;
+      loadSong(index);
+      playPause();
+      toggleMenu(); 
+    });
+    songList.appendChild(songItem);
+  });
+}
+
+function debounce(func, delay) {
+  let timeout;
+  return function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(func, delay);
+  };
+}
+
+const filterSongs = debounce(() => {
+  const query = searchBar.value.toLowerCase();
+  const filteredSongs = songs.filter(song => song.title.toLowerCase().includes(query));
+  songList.innerHTML = ''; 
+  filteredSongs.forEach((song, index) => {
+    const songItem = document.createElement('div');
+    songItem.classList.add('song-item');
+    songItem.textContent = song.title;
+    songItem.addEventListener('click', () => {
+      currentSongIndex = index;
+      loadSong(index);
+      playPause();
+      toggleMenu();
+    });
+    songList.appendChild(songItem);
+  });
+}, 300);
+
+function initPlayer() {
+  loadSong(currentSongIndex);
+  updateSongList();
+  searchBar.addEventListener('input', filterSongs);
+  songListMenu.style.display = 'none'; // Escondemos el menú de canciones al iniciar
+}
+
+menuButton.addEventListener('click', toggleMenu);
 
 playPauseBtn.addEventListener('click', playPause);
 nextBtn.addEventListener('click', nextSong);
@@ -160,10 +162,6 @@ volumeControl.addEventListener('input', (e) => {
 });
 audio.addEventListener('timeupdate', updateProgress);
 progressBar.addEventListener('input', setProgress);
+audio.addEventListener('ended', nextSong);
 
-audio.addEventListener('ended', () => {
-  if (!isRepeating) nextSong();
-});
-
-// Cargar la primera canción
-loadSong(currentSongIndex);
+initPlayer();

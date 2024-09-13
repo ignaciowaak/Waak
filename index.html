@@ -6,26 +6,73 @@
     <link rel="stylesheet" href="style.css">
     <title>My play list (IG)</title>
     <style>
-        /* Agrega los estilos en línea aquí */
+        /* Estilos en línea */
         #volume {
-            accent-color: white; /* Cambia el color del control de volumen */
+            accent-color: white;
         }
-
         #progress-bar {
-            accent-color: white; /* Cambia el color del recorrido de la música */
+            accent-color: white;
         }
-
         .controls button,
         .options button {
-            background-color: transparent; /* Botones con fondo transparente */
+            background-color: transparent;
             border: none;
-            color: white; /* Cambia el color del texto de los botones a blanco */
+            color: white;
             font-size: 1.5rem;
         }
-
         .volume-control label,
         #time-display {
-            color: white; /* Cambia el color del texto del control de volumen y el tiempo a blanco */
+            color: white;
+        }
+        .menu-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        #menu-button {
+            background-color: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+        }
+        #song-list-menu {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 40px;
+            right: 0;
+            width: 250px;
+            max-height: 400px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            overflow-y: auto;
+            padding: 10px;
+            z-index: 100;
+        }
+        .hidden {
+            display: none;
+        }
+        #search-bar {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+        }
+        #song-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .song-item {
+            padding: 5px 10px;
+            border-bottom: 1px solid white;
+            color: white;
+            cursor: pointer;
+        }
+        .song-item:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
@@ -57,6 +104,15 @@
         <div class="options">
             <button id="shuffle">🔀</button>
             <button id="repeat">🔁</button>
+        </div>
+    </div>
+
+    <!-- Menú de canciones -->
+    <div class="menu-container">
+        <button id="menu-button">⋮</button>
+        <div id="song-list-menu" class="hidden">
+            <input type="text" id="search-bar" placeholder="Buscar canciones...">
+            <div id="song-list"></div>
         </div>
     </div>
 

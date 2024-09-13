@@ -13,6 +13,7 @@ body {
     background-color: black;
     overflow: hidden;
     position: relative;
+    transition: filter 0.8s ease-in-out; /* Transición para desenfoque de fondo */
 }
 
 .music-player {
@@ -97,7 +98,7 @@ input[type="range"] {
     z-index: -3;
 }
 
-/* Contenedor del título de la canción */
+/* Efecto del título de canción */
 .song-title-container {
     width: 100%;
     overflow: hidden;
@@ -105,7 +106,6 @@ input[type="range"] {
     position: relative;
 }
 
-/* Título animado */
 .song-title {
     display: inline-block;
     animation: scrollTitle 15s linear infinite;
@@ -118,4 +118,45 @@ input[type="range"] {
     100% {
         transform: translateX(-100%);
     }
+}
+
+/* Menú */
+.menu {
+    position: absolute;
+    top: 0;
+    right: -300px; /* Posición inicial fuera de pantalla */
+    width: 300px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    transition: right 1s ease, opacity 0.5s ease;
+    opacity: 0;
+    z-index: 3;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.menu-open {
+    right: 0; /* Despliega el menú */
+    opacity: 1;
+}
+
+/* Desenfoque del contenido de fondo cuando el menú está abierto */
+body.menu-active {
+    filter: blur(8px);
+}
+
+/* Transiciones de apertura/cierre del menú */
+.menu-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 4;
+    background-color: white;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 50%;
 }
