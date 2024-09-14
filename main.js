@@ -30,8 +30,8 @@ const songs = [
   { title: 'Travis Scott - HIGHEST IN THE ROOM.mp3', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
     { title: 'YSY A - MAS GRANDE ESTE AÑO (Prod. CLUB HATS)', src: 'cansiones/9.mp3', img: 'fotos/9.jpg' },
     { title: 'YSY A - A POR TODO (PROD. ONIRIA)', src: 'cansiones/10.mp3', img: 'fotos/10.jpg' },
-    { title: 'Canción 11', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
-    { title: 'Canción 12', src: 'cansiones/8.mp3', img: 'fotos/13.jpg' }
+    { title: 'YSY A x BHAVI ft. TIAGO PZK - MI CIUDAD (PROD. ASAN)', src: 'cansiones/11.mp3', img: 'fotos/11.jpg' },
+    { title: 'YSY A FT DUKI - NO DA MAS (PROD. ONIRIA FT. YESAN)', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' }
 ];
 
 let currentSongIndex = 0;
