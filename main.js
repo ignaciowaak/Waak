@@ -25,13 +25,13 @@ const songs = [
   { title: 'Polo G - Go Stupip', src: 'cansiones/3.mp3', img: 'fotos/3.jpg' },
   { title: 'Travis Scott - BUTTERFLY EFFECT', src: 'cansiones/4.mp3', img: 'fotos/4.jpg' },
   { title: 'Travis scott - MY EYES', src: 'cansiones/5.mp3', img: 'fotos/5.jpg' },
-  { title: 'Canción 6', src: 'cansiones/6.mp3', img: 'fotos/6.jpg' },
+  { title: 'Nightcrawler travis scott', src: 'cansiones/6.mp3', img: 'fotos/6.jpg' },
   { title: 'Canción 7', src: 'cansiones/7.mp3', img: 'fotos/7.jpg' },
-  { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
-    { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
-    { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
-    { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
-    { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' }
+  { title: 'Canción 9', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
+    { title: 'Canción 10', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
+    { title: 'Canción 11', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
+    { title: 'Canción 12', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
+    { title: 'Canción 13', src: 'cansiones/8.mp3', img: 'fotos/13.jpg' }
 ];
 
 let currentSongIndex = 0;
