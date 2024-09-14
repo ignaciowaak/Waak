@@ -28,10 +28,10 @@ const songs = [
   { title: 'Nightcrawler travis scott', src: 'cansiones/6.mp3', img: 'fotos/6.jpg' },
   { title: 'Travis Scott - TIL FURTHER NOTICE ft. James Blake_ 21 Savage', src: 'cansiones/7.mp3', img: 'fotos/7.jpg' },
   { title: 'Travis Scott - HIGHEST IN THE ROOM.mp3', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
-    { title: 'YSY A - MAS GRANDE ESTE AÑO (Prod. CLUB HATS)', src: 'cansiones/9.mp3', img: 'fotos/9.jpg' },
-    { title: 'YSY A - A POR TODO (PROD. ONIRIA)', src: 'cansiones/10.mp3', img: 'fotos/10.jpg' },
-    { title: 'YSY A x BHAVI ft. TIAGO PZK - MI CIUDAD (PROD. ASAN)', src: 'cansiones/11.mp3', img: 'fotos/11.jpg' },
-    { title: 'YSY A FT DUKI - NO DA MAS (PROD. ONIRIA FT. YESAN)', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' }
+  { title: 'YSY A - MAS GRANDE ESTE AÑO (Prod. CLUB HATS)', src: 'cansiones/9.mp3', img: 'fotos/9.jpg' },
+  { title: 'YSY A - A POR TODO (PROD. ONIRIA)', src: 'cansiones/10.mp3', img: 'fotos/10.jpg' },
+  { title: 'YSY A x BHAVI ft. TIAGO PZK - MI CIUDAD (PROD. ASAN)', src: 'cansiones/11.mp3', img: 'fotos/11.jpg' },
+  { title: 'YSY A FT DUKI - NO DA MAS (PROD. ONIRIA FT. YESAN)', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' }
 ];
 
 let currentSongIndex = 0;
@@ -57,16 +57,22 @@ function playPause() {
   isPlaying = !isPlaying;
 }
 
+function playSong() {
+  audio.play();
+  playPauseBtn.textContent = '∎';
+  isPlaying = true;
+}
+
 function nextSong() {
   currentSongIndex = isShuffling ? Math.floor(Math.random() * songs.length) : (currentSongIndex + 1) % songs.length;
   loadSong(currentSongIndex);
-  playPause();
+  playSong(); // Reproduce automáticamente la siguiente canción
 }
 
 function prevSong() {
   currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
   loadSong(currentSongIndex);
-  playPause();
+  playSong(); // Reproduce automáticamente la canción anterior
 }
 
 function toggleShuffle() {
@@ -115,7 +121,7 @@ function updateSongList() {
     songItem.addEventListener('click', () => {
       currentSongIndex = index;
       loadSong(index);
-      playPause();
+      playSong(); // Reproduce automáticamente la canción seleccionada
       toggleMenu(); 
     });
     songList.appendChild(songItem);
@@ -141,7 +147,7 @@ const filterSongs = debounce(() => {
     songItem.addEventListener('click', () => {
       currentSongIndex = index;
       loadSong(index);
-      playPause();
+      playSong(); // Reproduce automáticamente la canción filtrada
       toggleMenu();
     });
     songList.appendChild(songItem);
@@ -174,6 +180,40 @@ volumeControl.addEventListener('input', (e) => {
 });
 audio.addEventListener('timeupdate', updateProgress);
 progressBar.addEventListener('input', setProgress);
-audio.addEventListener('ended', nextSong);
+
+// Función para la transición suave entre canciones
+function fadeOutInTransition(callback) {
+  const fadeOutDuration = 2000; // 2 segundos para desvanecer
+  const fadeInDuration = 2000;  // 2 segundos para aumentar volumen
+
+  // Fade out: bajar volumen
+  let fadeOutInterval = setInterval(() => {
+    if (audio.volume > 0.05) {
+      audio.volume = Math.max(0, audio.volume - 0.05);
+    } else {
+      clearInterval(fadeOutInterval);
+      callback(); // Cambiar a la siguiente canción
+      fadeInTransition(fadeInDuration);
+    }
+  }, fadeOutDuration / 20);
+}
+
+// Función para aumentar el volumen gradualmente
+function fadeInTransition(duration) {
+  audio.volume = 0;  // Inicia en 0
+  let fadeInInterval = setInterval(() => {
+    if (audio.volume < 1) {
+      audio.volume = Math.min(1, audio.volume + 0.05);
+    } else {
+      clearInterval(fadeInInterval);
+    }
+  }, duration / 20); // Controlar el incremento del volumen durante el fade-in
+}
+
+audio.addEventListener('ended', () => {
+  fadeOutInTransition(nextSong); // Al terminar la canción, hacer la transición a la siguiente
+});
+
+progressBar.addEventListener('input', setProgress);
 
 initPlayer();
