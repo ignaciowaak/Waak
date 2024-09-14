@@ -31,7 +31,23 @@ const songs = [
   { title: 'YSY A - MAS GRANDE ESTE AÑO (Prod. CLUB HATS)', src: 'cansiones/9.mp3', img: 'fotos/9.jpg' },
   { title: 'YSY A - A POR TODO (PROD. ONIRIA)', src: 'cansiones/10.mp3', img: 'fotos/10.jpg' },
   { title: 'YSY A x BHAVI ft. TIAGO PZK - MI CIUDAD (PROD. ASAN)', src: 'cansiones/11.mp3', img: 'fotos/11.jpg' },
-  { title: 'YSY A FT DUKI - NO DA MAS (PROD. ONIRIA FT. YESAN)', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' }
+  { title: 'YSY A FT DUKI - NO DA MAS (PROD. ONIRIA FT. YESAN)', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'YSY A FT. DE LA GHETTO - LA JOYA DE ESTA ERA (PROD. KOKI LS)', src: 'cansiones/13.mp3', img: 'fotos/13.jpg' },
+    { title: 'cansion 14', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 15', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 16', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 17', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 18', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 19', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 20', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 21', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 22', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 23', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 24', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 25', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 26', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' },
+    { title: 'cansion 27', src: 'cansiones/12.mp3', img: 'fotos/12.jpg' }
+    
 ];
 
 let currentSongIndex = 0;
