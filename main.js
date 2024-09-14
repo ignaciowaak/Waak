@@ -27,7 +27,11 @@ const songs = [
   { title: 'Canción 5', src: 'cansiones/5.mp3', img: 'fotos/5.jpg' },
   { title: 'Canción 6', src: 'cansiones/6.mp3', img: 'fotos/6.jpg' },
   { title: 'Canción 7', src: 'cansiones/7.mp3', img: 'fotos/7.jpg' },
-  { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' }
+  { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
+    { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
+    { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
+    { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
+    { title: 'Canción 8', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' }
 ];
 
 let currentSongIndex = 0;
@@ -48,7 +52,7 @@ function playPause() {
     playPauseBtn.textContent = '▶';
   } else {
     audio.play();
-    playPauseBtn.textContent = '⏸️';
+    playPauseBtn.textContent = '∎';
   }
   isPlaying = !isPlaying;
 }
