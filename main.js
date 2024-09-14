@@ -21,13 +21,13 @@ let isRepeating = false;
 
 const songs = [
   { title: 'FE!N Travis Scott', src: 'cansiones/1.mp3', img: 'fotos/1.jpg' },
-  { title: 'Drake jmmy cooks ft 21 savege', src: 'cansiones/2.mp3', img: 'fotos/2.jpg' },
+  { title: 'Drake jimmy cooks ft 21 savege', src: 'cansiones/2.mp3', img: 'fotos/2.jpg' },
   { title: 'Polo G - Go Stupip', src: 'cansiones/3.mp3', img: 'fotos/3.jpg' },
   { title: 'Travis Scott - BUTTERFLY EFFECT', src: 'cansiones/4.mp3', img: 'fotos/4.jpg' },
   { title: 'Travis scott - MY EYES', src: 'cansiones/5.mp3', img: 'fotos/5.jpg' },
   { title: 'Nightcrawler travis scott', src: 'cansiones/6.mp3', img: 'fotos/6.jpg' },
   { title: 'Travis Scott - TIL FURTHER NOTICE ft. James Blake_ 21 Savage', src: 'cansiones/7.mp3', img: 'fotos/7.jpg' },
-  { title: 'Canción 9', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
+  { title: 'Travis Scott - HIGHEST IN THE ROOM.mp3', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
     { title: 'Canción 10', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
     { title: 'Canción 11', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
     { title: 'Canción 12', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
