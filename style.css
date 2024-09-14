@@ -129,9 +129,14 @@ body {
     color: white;
 }
 
-.controls, .options, .volume-control {
+.controls, .options, {
     margin-top: 40px;
     margin: 30px 50px;
+}
+.volume-control{
+  margin-bottom: -10px;
+  margin-top: 60px
+  
 }
 
 button {
