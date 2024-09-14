@@ -13,6 +13,7 @@ const menuButton = document.getElementById('menu-button');
 const songListMenu = document.getElementById('song-list-menu');
 const songList = document.getElementById('song-list');
 const searchBar = document.getElementById('search-bar');
+const welcomeScreen = document.getElementById('welcome-screen'); // Elemento de bienvenida
 
 let isPlaying = false;
 let isShuffling = false;
@@ -44,7 +45,7 @@ function loadSong(songIndex) {
 function playPause() {
   if (isPlaying) {
     audio.pause();
-    playPauseBtn.textContent = '▶️';
+    playPauseBtn.textContent = '▶';
   } else {
     audio.play();
     playPauseBtn.textContent = '⏸️';
@@ -149,6 +150,13 @@ function initPlayer() {
   searchBar.addEventListener('input', filterSongs);
   songListMenu.style.display = 'none'; // Escondemos el menú de canciones al iniciar
 }
+
+// Ocultar la pantalla de bienvenida después de 3 segundos
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    welcomeScreen.style.display = 'none'; // Quitar la pantalla de bienvenida
+  }, 3000); // 3 segundos
+});
 
 menuButton.addEventListener('click', toggleMenu);
 

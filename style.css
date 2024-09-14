@@ -108,15 +108,15 @@ input[type="range"] {
 
 .song-title {
     display: inline-block;
-    animation: scrollTitle 15s linear infinite;
+    animation: scrollTitle 10s linear infinite; /* Desplazamiento más fluido */
 }
 
 @keyframes scrollTitle {
     0% {
-        transform: translateX(100%);
+        transform: translateX(100%); /* Comienza fuera del contenedor */
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-100%); /* Se desliza hasta el final */
     }
 }
 
@@ -128,35 +128,30 @@ input[type="range"] {
     width: 300px;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    transition: right 1s ease, opacity 0.5s ease;
+    transition: right 1.6s ease-in-out, opacity 0.4s ease-in-out; /* Transición más fluida */
     opacity: 0;
     z-index: 3;
-    backdrop-filter: blur(10px);
-    display: flex;
-    flex-direction: column;
+    backdrop-filter: blur(10px); /* Efecto de desenfoque en el menú */
+}
+
+.menu.visible {
+    right: 0; /* Muestra el menú deslizándolo hacia adentro */
+    opacity: 1; /* Hace visible el menú */
+}
+
+/* Contenido del menú */
+.menu ul {
+    list-style: none;
     padding: 20px;
 }
 
-.menu-open {
-    right: 0; /* Despliega el menú */
-    opacity: 1;
-}
-
-/* Desenfoque del contenido de fondo cuando el menú está abierto */
-body.menu-active {
-    filter: blur(8px);
-}
-
-/* Transiciones de apertura/cierre del menú */
-.menu-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 4;
-    background-color: white;
-    border: none;
+.menu ul li {
     padding: 10px;
-    font-size: 18px;
+    border-bottom: 1px solid #fff;
+    color: white;
     cursor: pointer;
-    border-radius: 50%;
+}
+
+.menu ul li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
