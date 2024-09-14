@@ -29,7 +29,7 @@ const songs = [
   { title: 'Travis Scott - TIL FURTHER NOTICE ft. James Blake_ 21 Savage', src: 'cansiones/7.mp3', img: 'fotos/7.jpg' },
   { title: 'Travis Scott - HIGHEST IN THE ROOM.mp3', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
     { title: 'YSY A - MAS GRANDE ESTE AÑO (Prod. CLUB HATS)', src: 'cansiones/9.mp3', img: 'fotos/9.jpg' },
-    { title: 'Canción 10', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
+    { title: 'YSY A - A POR TODO (PROD. ONIRIA)', src: 'cansiones/10.mp3', img: 'fotos/10.jpg' },
     { title: 'Canción 11', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
     { title: 'Canción 12', src: 'cansiones/8.mp3', img: 'fotos/13.jpg' }
 ];
