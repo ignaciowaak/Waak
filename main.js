@@ -26,7 +26,7 @@ const songs = [
   { title: 'Travis Scott - BUTTERFLY EFFECT', src: 'cansiones/4.mp3', img: 'fotos/4.jpg' },
   { title: 'Travis scott - MY EYES', src: 'cansiones/5.mp3', img: 'fotos/5.jpg' },
   { title: 'Nightcrawler travis scott', src: 'cansiones/6.mp3', img: 'fotos/6.jpg' },
-  { title: 'Canción 7', src: 'cansiones/7.mp3', img: 'fotos/7.jpg' },
+  { title: 'Travis Scott - TIL FURTHER NOTICE ft. James Blake_ 21 Savage', src: 'cansiones/7.mp3', img: 'fotos/7.jpg' },
   { title: 'Canción 9', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
     { title: 'Canción 10', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
     { title: 'Canción 11', src: 'cansiones/8.mp3', img: 'fotos/8.jpg' },
