@@ -19,7 +19,7 @@ body {
 .music-player {
     position: relative;
     width: 280px;
-    padding: 5px;
+    padding: 2px;
     border-radius: 20px;
     background: rgba(255, 255, 255, 0);
     backdrop-filter: blur(1000px);
@@ -34,29 +34,89 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(100deg, #E0FFFF, #B0E0E6, #ADD8E6, #87CEFA, #4682B4, #5F9EA0, #00CED1, #20B2AA, #7FFFD4, #66CDAA, #3CB371, #2E8B57, #006400, #003366, #000080);
+    background: linear-gradient(30deg,#F0F8FF, #FFE4E1,
+
+
+ #AFEEEE, #FFDAB9,
+
+
+ #E6E6FA, #FFEFD5,
+
+
+ #B0C4DE, #FFFACD,
+
+
+#D8BFD8, #FFDEAD,
+
+
+#87CEEB, #F5DEB3,
+
+
+ #4682B4, #FFEBCD,
+
+
+ #00BFFF, #F0E68C,
+
+
+#B0E0E6, #FAFAD2,
+
+
+#7B68EE, #FFB6C1,
+
+
+ #6A5ACD, #FFF0F5,
+
+
+ #6495ED, #FDF5E6,
+
+
+#00CED1, #F4A460,
+
+
+ #5F9EA0, #FFE4B5,
+
+
+ #20B2AA, #FAEBD7,
+
+
+#48D1CC, #FFEBCD,
+
+
+#AFEEEE, #FFDAB9,
+
+
+#00FA9A, #F08080,
+
+
+#7FFFD4, #FF7F50,
+
+
+#00FF7F, #FF4500);
     background-size: 5000% 5000%;
     filter: blur(9000px);
     z-index: -9;
-    animation: animateBackground 30s linear infinite;
+    animation: animateBackground 220s linear infinite;
 }
 
 @keyframes animateBackground {
-    0% { background-position: 0% 0%; }
-    25% { background-position: 100% 0%; }
-    50% { background-position: 100% 100%; }
-    75% { background-position: 0% 100%; }
-    100% { background-position: 0% 0%; }
+  0% { background-position: 5% 9%; }
+  5% { background-position: 1% 60%; }
+  10% { background-position: 10% 25%; }
+    15% { background-position: 10% 20%; }
+    25% { background-position: 80% 0%; }
+    50% { background-position: 80% 100%; }
+    75% { background-position: 30% 50%; }
+    100% { background-position: 80% 0%; }
 }
 
 .song-info img {
     width: 100%;
     border-radius: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .progress-container {
-    margin: 10px 0;
+    margin: 30px px;
     text-align: center;
 }
 
@@ -70,13 +130,14 @@ body {
 }
 
 .controls, .options, .volume-control {
-    margin-top: 10px;
+    margin-top: 40px;
+    margin: 30px 50px;
 }
 
 button {
     background-color: transparent;
     border: none;
-    font-size: 20px;
+    font-size: 10px;
     color: white;
     cursor: pointer;
 }
@@ -108,7 +169,7 @@ input[type="range"] {
 
 .song-title {
     display: inline-block;
-    animation: scrollTitle 10s linear infinite; /* Desplazamiento más fluido */
+    animation: scrollTitle 15s linear infinite; /* Desplazamiento más fluido */
 }
 
 @keyframes scrollTitle {
@@ -124,7 +185,7 @@ input[type="range"] {
 .menu {
     position: absolute;
     top: 0;
-    right: -300px; /* Posición inicial fuera de pantalla */
+    right: -400px; /* Posición inicial fuera de pantalla */
     width: 300px;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
